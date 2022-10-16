@@ -1,0 +1,5 @@
+function typeOfSum(a, b) {
+ sum = a + b;
+  if (typeof sum === 'string') return 'string';
+  else  return 'number';
+}
