@@ -1,0 +1,123 @@
+function App() {
+
+
+    const students = [
+        {
+            name: "Bob",
+            age: 22,
+            isMarried: true,
+            scores: 85,
+        },
+        {
+            name: "Alex",
+            age: 21,
+            isMarried: true,
+            scores: 90,
+        },
+        {
+            name: "Nick",
+            age: 20,
+            isMarried: false,
+            scores: 120,
+        },
+        {
+            name: "John",
+            age: 19,
+            isMarried: false,
+            scores: 100,
+        },
+        {
+            name: "Helen",
+            age: 20,
+            isMarried: false,
+            scores: 110,
+        },
+        {
+            name: "Ann",
+            age: 20,
+            isMarried: false,
+            scores: 105,
+        },
+    ];
+
+
+
+//3. Поверхностная копия students
+    const copyStudents = [...students];
+   /* console.log(students === copyStudents);
+    console.log(students[0] === copyStudents[0]);
+*/
+//4*. Полная (глубокая) копия students
+    const deepCopyStudents = students.map((s) => ({...s}));
+    /*console.log( deepCopyStudents);
+    console.log(students[0].name === deepCopyStudents[0].name);*/
+
+
+//Далее все преобразования выполняем не модифицируя исходный массив students
+
+//5. Отсортируйте студентов по успеваемости (лучший идёт первым)
+    let sortBestStudent =deepCopyStudents.sort((a,b) =>b.scores-a.scores )
+  /*  console.log(sortBestStudent);*/
+
+    //5a. Отсортируйте студентов по алфавиту
+
+    let sortStudent = deepCopyStudents.sort((a,b) => a.name > b.name ? 1: -1);
+    /*console.log(sortStudent)
+    console.log(students)*/
+
+//6. Сформируйте массив студентов, у которых 100 и более баллов
+    const bestStudents = students.filter(el=> el.scores >= 100)
+/*    console.log(bestStudents)*/
+
+    //6a.Сформируйте массив из трёх лучших студентов
+    const topStudents = sortBestStudent.splice(0,3) //deleted thirst 3 best students
+     //console.log(sortBestStudent)
+
+  //6b. Объедините массивы deepCopyStudents и topStudents так,
+  // чтоб сохранился порядок сортировки
+    const newDeepCopyStudents = [...deepCopyStudents, ...topStudents];
+    const newDeepCopyStudents2 = deepCopyStudents.concat(topStudents);
+    //console.log(newDeepCopyStudents);
+   // console.log(newDeepCopyStudents2);
+    //console.log(deepCopyStudents);
+  //  console.log(topStudents);
+
+    //7. Сформируйте массив холостых студентов
+    const notMarriedStudents = students.filter(el => !el.isMarried)
+   // console.log(notMarriedStudents)
+
+
+    //8. Сформируйте массив имён студентов
+  const studentsNames = students.map(el => el.name)
+    //console.log(studentsNames)
+
+
+//8a. Сформируйте строку из имён студентов, разделённых
+// - пробелом
+// - запятой
+    const nameWithSpace = studentsNames.join(' ');
+   // console.log(nameWithSpace)
+
+  const namesWithComma = studentsNames.join(', ');
+    //console.log(namesWithComma)
+
+//9. Добавьте всем студентам свойство "isStudent" со значением true
+    const trueStudents = students.map(el => ({...el, isStudent: true}));
+  //  console.log(trueStudents)
+
+
+    //10. Nick женился. Выполните преобразование массива students
+   let studentsWithMarriedNick = students.map(el => el.name === 'Nick'? {...el, isMarried: true}: el );
+  //  console.log(studentsWithMarriedNick);
+
+    //11. Найдите Студентку по имени Ann
+   //const ann = students.filter(el => el.name === 'Ann')
+   const ann = students.find(el => el.name === 'Ann')
+   // console.log(ann)
+
+//12. Найдите студента с самым высоким баллом
+  const bestScoreStudent = students.reduce((acc, st) => {
+    return acc.scores > st.scores ? acc : st;
+    });
+
+     console.log(bestScoreStudent);
