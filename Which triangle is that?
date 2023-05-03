@@ -1,0 +1,22 @@
+//Build a function that will take the length of each side of a triangle and return if it's either an Equilateral, 
+//an Isosceles, a Scalene or an invalid triangle.
+
+//It has to return a string with the type of triangle.
+
+
+var typeOfTriangle = function (a, b, c) {
+   if(typeof a !== 'number' || typeof b !== 'number' || typeof c !== 'number') {
+     return "Not a valid triangle";
+     }
+   else if ((a+b<=c) || (b+c<=a) || (a+c<=b)) {
+    return "Not a valid triangle";
+     }
+  else if (a == b && b== c &&  a==c ) {
+        return "Equilateral";
+    }else if (a == b  || a == c  || b == c) {
+        return "Isosceles";
+    }else if (a !== b  && a !== c  && b !== c) {
+        return "Scalene";
+    }     
+
+}
