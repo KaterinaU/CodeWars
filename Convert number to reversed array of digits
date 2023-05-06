@@ -1,0 +1,9 @@
+//Given a random non-negative number, you have to return the digits of this number within an array in reverse order.
+
+function digitize(n) {
+  //code here
+  const arrNumbers = n.toString().split('').reverse();
+  const resalt = arrNumbers.map((number)=>{
+        return Number(number) });
+  return resalt
+}
