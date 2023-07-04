@@ -1,0 +1,6 @@
+//Complete the square sum function so that it squares each number passed into it and then sums the results together.
+
+function squareSum(numbers){
+let arr = numbers.map(el => el*el)
+return arr.length>0? arr.reduce((acc, st)=> acc+ st) : 0;
+}
