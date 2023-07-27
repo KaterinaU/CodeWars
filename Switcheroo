@@ -1,0 +1,14 @@
+//Given a string made up of letters a, b, and/or c, switch the position of letters a and b (change a to b and vice versa). Leave any incidence of c untouched.
+
+function switcheroo(x){
+ var array = x.split('');
+  for (var i = 0; i < array.length; i++) {
+    if (array[i] === 'a') {
+      array[i] = 'b';
+    } else if (array[i] === 'b') {
+      array[i] = 'a';
+    }
+  }
+
+ return array.join('');
+}
